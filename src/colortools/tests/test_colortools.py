@@ -55,12 +55,22 @@ def test_color_compares_with_tuple():
     assert color == (255, 0, 0)
 
 
-def test_getitem_color():
+def test_color_is_iterable():
+    assert list(Color(1, 2, 3, 4)) == [1, 2, 3, 4]
+
+
+def test_getitem():
     color = Color(1, 2, 3, 4)
     assert color[0] == 1
     assert color[1] == 2
     assert color[2] == 3
     assert color[3] == 4
+
+
+def test_getitem_negative():
+    color = Color(1, 2, 3, 4)
+    assert color[-1] == 4
+    assert len(color) == 4
 
 
 def test_getitem_fails():
