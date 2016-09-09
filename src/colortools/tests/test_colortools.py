@@ -1,4 +1,5 @@
 import pytest
+
 from colortools import Color
 
 
@@ -52,6 +53,20 @@ def test_color_compares_with_tuple():
     color = Color('red')
     assert color == (255, 0, 0, 255)
     assert color == (255, 0, 0)
+
+
+def test_getitem_color():
+    color = Color(1, 2, 3, 4)
+    assert color[0] == 1
+    assert color[1] == 2
+    assert color[2] == 3
+    assert color[3] == 4
+
+
+def test_getitem_fails():
+    color = Color(1, 2, 3, 4)
+    with pytest.raises(IndexError):
+        color[4]
 
 
 def test_init_color_from_color():
