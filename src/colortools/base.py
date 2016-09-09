@@ -9,6 +9,7 @@ class Color(object):
     """
     Represents a color.
     """
+
     __slots__ = ['_red', '_green', '_blue', '_alpha']
     _CACHE = {}
     _RANGE = (0, 1, 2, 3)
@@ -208,15 +209,13 @@ class Color(object):
         return tuple(x / 255 for x in self.hsi)
 
     def copy(self, red=None, green=None, blue=None, alpha=None, **kwds):
-        """Copia a cor possivelmente trocando o valor de alguma das componentes
-        RGBA ou componentes HSL ou HSI.
+        """
+        Returns a copy, possibly changing the value of a component.
 
-        Examples
-        --------
-
-        >>> color = Color('white')
-        >>> color.copy(red=80, alpha=128)
-        Color(80, 255, 255, 128)
+        Example:
+            >>> color = Color('white')
+            >>> color.copy(red=80, alpha=128)
+            Color(80, 255, 255, 128)
         """
         R, G, B, A = self
 
@@ -547,5 +546,3 @@ def rgba(color):
         return color.rgba
     except AttributeError:
         return Color(color or 'black').rgba
-
-import pgzero

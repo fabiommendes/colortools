@@ -36,6 +36,18 @@ def test_init_from_8_hex():
     assert Color('#00FF0080') == Color(0, 255, 0, 128)
 
 
+def test_init_from_color():
+    black = Color(0, 0, 0)
+    assert Color(black) == black
+
+
+def test_init_from_sequence():
+    black = Color(0, 0, 0)
+    assert Color([0, 0, 0]) == black
+    assert Color((0, 0, 0)) == black
+    assert Color((0, 0, 0, 255)) == black
+
+
 def test_color_compares_with_tuple():
     color = Color('red')
     assert color == (255, 0, 0, 255)
