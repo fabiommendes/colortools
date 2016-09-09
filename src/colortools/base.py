@@ -262,6 +262,10 @@ class Color(object):
 
     def __getitem__(self, key):
         if isinstance(key, int):
+            if key < 0:
+                key += len(self)
+                if key < 0:
+                    raise IndexError(key)
             if key == 0:
                 return self._red
             elif key == 1:
@@ -270,11 +274,6 @@ class Color(object):
                 return self._blue
             elif key == 3:
                 return self._alpha
-            elif key < 0:
-                key = len(self) - key
-                if key < 0:
-                    raise IndexError
-                return self[key]
         else:
             return tuple(self[i] for i in self._RANGE[key])
         raise IndexError(key)
